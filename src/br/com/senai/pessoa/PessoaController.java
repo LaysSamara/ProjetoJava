@@ -18,7 +18,7 @@ public class PessoaController {
 		System.out.print("> ");
 		return tec.nextInt();
 	}
-
+	
 	public Pessoa cadastrarPessoa(){
 		Pessoa pessoa = new Pessoa();
 
@@ -152,4 +152,30 @@ public class PessoaController {
 		
 		pessoas.remove(idPessoa);
 	}
+
+	PessoaController pessoaController = new PessoaController();
+	
+	public static void menu() {
+		System.out.println("1) Cadastrar pessoa");
+		System.out.println("Listar pessoas cadastradas");
+		System.out.println("Editar pessoas");
+		System.out.println("Excluir pessoa");
+	}
+	
+	
+	case 1:
+		pessoas.add(pessoaController.cadastrarPessoa());
+		break;
+	
+	case 2:
+		pessoaController.listarPessoas(pessoas);
+		break;
+		
+	case 3:
+		pessoaController.editarPessoa(pessoas);
+		break;
+		
+	case 4:
+		pessoaController.excluirPessoa(pessoas);
+		break;
 }

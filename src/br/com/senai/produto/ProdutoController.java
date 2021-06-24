@@ -148,7 +148,31 @@ public class ProdutoController {
 		
 		produtos.remove(idProduto);
 	}
+	
+	ProdutoController produtoController = new ProdutoController();
+	
+	public static void menu() {
+		System.out.println("1) Cadastrar pessoa");
+		System.out.println("Listar pessoas cadastradas");
+		System.out.println("Editar pessoas");
+		System.out.println("Excluir pessoa");
+	}
 
+	case 1:
+		produtos.add(produtoController.cadastrarProduto());
+		break;
+		
+	case 2:
+		produtoController.listarProdutos(produtos);
+		break;	
+		
+	case 3:
+		produtoController.editarProduto(produtos);
+		break;
+		
+	case 4:
+		produtoController.excluirProduto(produtos);
+		break;
 }
 
 
