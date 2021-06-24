@@ -3,6 +3,7 @@ package br.com.senai;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.senai.loja.Venda;
 import br.com.senai.loja.VendaController;
 import br.com.senai.pessoa.Pessoa;
 import br.com.senai.pessoa.PessoaController;
@@ -14,9 +15,11 @@ public class ProgramaPrincipal {
 	public static void main(String[] args) {
 		List<Pessoa> pessoas = new ArrayList<>();
 		List<Produto> produtos = new ArrayList<Produto>();
- 
-		PessoaController pessoaController = new PessoaController();
+		List<Venda> vendas = new ArrayList<Venda>();
+		
 		ProdutoController produtoController = new ProdutoController();
+		PessoaController pessoaController = new PessoaController();
+		VendaController vendaController = new VendaController();
 		
 		Produto produto = new Produto (
 			"Maracujá",
@@ -33,41 +36,21 @@ public class ProgramaPrincipal {
 			menu();
 
 			int opcao = pessoaController.leOpcao();
-
+			
 			switch(opcao){
 				case 1:
-					pessoas.add(pessoaController.cadastrarPessoa());
+					pessoaController.menu(pessoas);
 					break;
 
 				case 2:
-					pessoaController.listarPessoas(pessoas);
+					produtoController.menu(produtos);
 					break;
 					
 				case 3:
-					pessoaController.editarPessoa(pessoas);
+					vendaController.menu(vendas,produtos,pessoas);
 					break;
 					
 				case 4:
-					pessoaController.excluirPessoa(pessoas);
-					break;
-					
-				case 5:
-					produtos.add(produtoController.cadastrarProduto());
-					break;
-					
-				case 6:
-					produtoController.listarProdutos(produtos);
-					break;	
-					
-				case 7:
-					produtoController.editarProduto(produtos);
-					break;
-					
-				case 8:
-					produtoController.excluirProduto(produtos);
-					break;
-
-				case 9:
 					sair = true;
 					break;
 
@@ -82,15 +65,10 @@ public class ProgramaPrincipal {
 	
 	public static void menu(){
 		System.out.println("\n--- MENU ---");
-		System.out.println("1) Cadastrar pessoa");
-		System.out.println("2) Listar pessoas cadastradas");
-		System.out.println("3) Editar pessoas");
-		System.out.println("4) Excluir pessoa");
-		System.out.println("5) Cadastrar produto");
-		System.out.println("6) Listar produtos");
-		System.out.println("7) Editar produto");
-		System.out.println("8) Excluir produto");
-		System.out.println("9) Sair do sistema");
+		System.out.println("1)Pessoa");
+		System.out.println("2)Produto");
+		System.out.println("3)Vendas");
+		System.out.println("4) Sair do sistema");
 		System.out.println("-------------------");
 	}
 
