@@ -64,6 +64,7 @@ public class ProdutoController {
 		}
 		
 		System.out.print("Informe o Id do produto para editar: ");
+		System.out.println("                                   ");
 		int idProduto = tec.nextInt() - 1;
 		
 		System.out.println("1) Nome do produto");
@@ -87,8 +88,8 @@ public class ProdutoController {
 			break;
 			
 		case 2:
-			System.out.println("---------EDITAR QUANTIDADE DE PRODUTO---------");
-			System.out.println("Informe a nova quantidade do produto: ");
+			System.out.println("---EDITAR QUANTIDADE DE PRODUTO---");
+			System.out.print("Informe a nova quantidade do produto: ");
 			produto.setQuantidadeDoProduto(tec.nextInt());
 			
 			produto.setNomeDoProduto(produtos.get(idProduto).getNomeDoProduto());
@@ -103,8 +104,8 @@ public class ProdutoController {
 			break;
 			
 		case 3:
-			System.out.println("---------EDITAR O VALOR UNITÁRIO DO PRODUTO---------");
-			System.out.println("Informe um novo valor unitário: ");
+			System.out.println("---EDITAR O VALOR UNITÁRIO DO PRODUTO---");
+			System.out.print("Informe um novo valor unitário: ");
 			produto.setValorUnitarioDoProduto(tec.nextDouble());
 			
 			produto.setNomeDoProduto(produtos.get(idProduto).getNomeDoProduto());
@@ -149,31 +150,49 @@ public class ProdutoController {
 		produtos.remove(idProduto);
 	}
 	
-	ProdutoController produtoController = new ProdutoController();
 	
-	public static void menu() {
-		System.out.println("1) Cadastrar pessoa");
-		System.out.println("Listar pessoas cadastradas");
-		System.out.println("Editar pessoas");
-		System.out.println("Excluir pessoa");
-	}
+	public void menu(List<Produto>produtos) {
+		boolean sair = false;
+		do {
+			System.out.println("------------------------------");
+			System.out.println("1) Cadastrar produto");
+			System.out.println("2) Listar produtos cadastradas");
+			System.out.println("3) Editar produtos");
+			System.out.println("4) Excluir produto");
+			System.out.println("5) Voltar ao menu principal");
+			
+			int opcao = leOpcao();
 
-	case 1:
-		produtos.add(produtoController.cadastrarProduto());
-		break;
+			switch(opcao) {
 		
-	case 2:
-		produtoController.listarProdutos(produtos);
-		break;	
+			case 1:
+				produtos.add(cadastrarProduto());
+				break;
+				
+			case 2:
+				listarProdutos(produtos);
+				break;	
+				
+			case 3:
+				editarProduto(produtos);
+				break;
+				
+			case 4:
+				excluirProduto(produtos);
+				break;
+			case 5:
+				sair = true;
+				break;
+			default:
+				System.out.println("Opção inválida!");
+				break;
+			}
+		}while(!sair);
 		
-	case 3:
-		produtoController.editarProduto(produtos);
-		break;
-		
-	case 4:
-		produtoController.excluirProduto(produtos);
-		break;
+	}
+			
 }
+
 
 
 

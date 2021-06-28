@@ -21,55 +21,43 @@ public class ProgramaPrincipal {
 		PessoaController pessoaController = new PessoaController();
 		VendaController vendaController = new VendaController();
 		
-		Produto produto = new Produto (
-			"Maracujá",
-			3.0,
-			40,
-			2.5 * 40
-			);
-		
-		produtos.add(produto);
-		
 		boolean sair = false;
 
 		do {
-			menu();
-
+			System.out.println("\n------ MENU -------");
+			System.out.println("1) Pessoa");
+			System.out.println("2) Produto");
+			System.out.println("3) Vendas");
+			System.out.println("4) Sair do sistema");
+			System.out.println("------------------------------");
+			
 			int opcao = pessoaController.leOpcao();
 			
 			switch(opcao){
-				case 1:
-					pessoaController.menu(pessoas);
-					break;
+			case 1:
+				pessoaController.menu(pessoas);
+				break;
 
-				case 2:
-					produtoController.menu(produtos);
-					break;
+			case 2:
+				produtoController.menu(produtos);
+				break;
 					
-				case 3:
-					vendaController.menu(vendas,produtos,pessoas);
-					break;
+			case 3:
+				vendaController.menu(vendas,produtos,pessoas);
+				break;
 					
-				case 4:
-					sair = true;
-					break;
+			case 4:
+				sair = true;
+				break;
 
-				default:
-					System.out.println("Opção inválida!");
-					break;
+			default:
+				System.out.println("Opção inválida!");
+				break;
 			}
-		}while(!sair);
+		} while(!sair);
 
 		System.out.println("Sistema finalizado!");
+		
+		}
+		
 	}
-	
-	public static void menu(){
-		System.out.println("\n--- MENU ---");
-		System.out.println("1)Pessoa");
-		System.out.println("2)Produto");
-		System.out.println("3)Vendas");
-		System.out.println("4) Sair do sistema");
-		System.out.println("-------------------");
-	}
-
-}

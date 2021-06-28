@@ -101,7 +101,7 @@ public class PessoaController {
 			break;
 
 		case 2:
-			System.out.println("---------EDITAR ANO DE NASCIMENTO---------");
+			System.out.println("---EDITAR ANO DE NASCIMENTO---");
 			System.out.println("Informe o ano correto de nascimento: ");
 			pessoa.setAnoDeNascimento(tec.nextInt());
 			
@@ -113,7 +113,7 @@ public class PessoaController {
 			break;
 			
 		case 3:
-			System.out.println("---------EDITAR ALTURA---------");
+			System.out.println("---EDITAR ALTURA---");
 			System.out.println("Informe o ano correto de nascimento: ");
 			pessoa.setAltura(tec.nextDouble());
 			
@@ -152,30 +152,42 @@ public class PessoaController {
 		
 		pessoas.remove(idPessoa);
 	}
+	
+	public void menu(List<Pessoa>pessoas) {
+		
+		boolean sair = false;
+		
+		do {
+			System.out.println("------------------------------");
+			System.out.println("1) Cadastrar pessoa");
+			System.out.println("2) Listar pessoas cadastradas");
+			System.out.println("3) Editar pessoas");
+			System.out.println("4) Excluir pessoa");
+			System.out.println("5) Voltar ao menu principal");
+		
+			int opcao = leOpcao();
+			
+			switch(opcao) {
+			case 1:
+				pessoas.add(cadastrarPessoa());
+				break;
+			case 2:
+				listarPessoas(pessoas);
+				break;
+			case 3:
+				editarPessoa(pessoas);
+				break;
+			case 4:
+				excluirPessoa(pessoas);
+				break;
+			case 5:
+				sair = true;
+				break;
+			default:
+				System.out.println("Opção inválida!");
+				break;
+			}
+		}while(!sair);
 
-	PessoaController pessoaController = new PessoaController();
-	
-	public static void menu() {
-		System.out.println("1) Cadastrar pessoa");
-		System.out.println("Listar pessoas cadastradas");
-		System.out.println("Editar pessoas");
-		System.out.println("Excluir pessoa");
 	}
-	
-	
-	case 1:
-		pessoas.add(pessoaController.cadastrarPessoa());
-		break;
-	
-	case 2:
-		pessoaController.listarPessoas(pessoas);
-		break;
-		
-	case 3:
-		pessoaController.editarPessoa(pessoas);
-		break;
-		
-	case 4:
-		pessoaController.excluirPessoa(pessoas);
-		break;
 }

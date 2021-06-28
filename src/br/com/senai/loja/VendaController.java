@@ -86,24 +86,42 @@ public class VendaController {
 		return venda;
 	}
 	
-	VendaController vendaController = new VendaController();
 	
-	public static void menu(){
+	public void menu(List<Venda>vendas,List<Produto>produtos,List<Pessoa>pessoas){
+		boolean sair = false;
+		do {
+		System.out.println("------------------------------");
 		System.out.println("\n---- MENU VENDA ----");
-		System.out.println("1)Cadastrar");
-		System.out.println("2)Listar");
-		System.out.println("3) Sair do sistema");
-		System.out.println("-------------------");
-	}
-	
-	case 1:
-		vendas.add(vendaController.cadastrarVenda(produtos, pessoas));
-		break;
+		System.out.println("1) Cadastrar venda");
+		System.out.println("2) Listar vendas");
+		System.out.println("3) Voltar ao menu principal");
 		
-	case 2:
-		vendaController.listarVenda(vendas);
-		break;
+		int opcao = leOpcao();
 	
-	
+		switch(opcao) {
+		
+		case 1:
+			vendas.add(cadastrarVenda(produtos, pessoas));
+			break;
+			
+		case 2:
+			listarVenda(vendas);
+			break;
+		
+		case 3:
+			sair = true;
+			break;
+			
+		default:
+			System.out.println("Opção inválida!");
+			break;
+		}
+			
+		}while(!sair);
 	}
+		
+
+}
+
+
 
